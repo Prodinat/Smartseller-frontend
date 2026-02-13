@@ -1,0 +1,113 @@
+.market-page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.market-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.market-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 92px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.market-row.done {
+  opacity: 0.75;
+}
+
+.market-name {
+  font-weight: 800;
+}
+
+.market-meta {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+}
+
+.badge.neutral {
+  border-color: rgba(108, 92, 231, 0.25);
+}
+
+.badge.pri-low { color: var(--text-secondary); }
+.badge.pri-medium { color: var(--accent-warning); border-color: rgba(241, 196, 15, 0.35); }
+.badge.pri-high { color: var(--accent-danger); border-color: rgba(231, 76, 60, 0.35); }
+
+.row-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.check {
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.check.checked {
+  border-color: rgba(0, 184, 148, 0.35);
+  color: var(--accent-success);
+  background: rgba(0, 184, 148, 0.06);
+}
+
+.print-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.print-title {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.print-subtitle {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.print-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+@media print {
+  .sidebar, .app-header, .page-header, .row-actions, .btn-primary, .btn-secondary, .modal-overlay { display: none !important; }
+  .app-container { display: block; }
+  .main-content-wrapper { margin: 0; }
+  .print-card { border: none !important; box-shadow: none !important; }
+  body { background: white !important; color: black !important; }
+}
+

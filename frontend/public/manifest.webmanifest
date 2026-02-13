@@ -1,0 +1,16 @@
+{
+  "name": "Smart Seller Assistant",
+  "short_name": "Smart Seller",
+  "description": "Private restaurant management app for Chicken Nation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1014",
+  "theme_color": "#0f1014",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: smart-seller-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_SSL
+        value: "true"
+      - key: CORS_ORIGINS
+        value: ""
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: VENDOR_PASSWORD
+        sync: false

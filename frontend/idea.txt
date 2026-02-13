@@ -1,0 +1,150 @@
+/*
+PROJECT: Smart Seller Assistant — Private Restaurant Management Web App
+ROLE: You are a Senior Full-Stack Engineer, UX Designer, and Security-minded Developer creating a professional web app.
+
+TECH STACK:
+- Frontend: React (TypeScript), PWA-ready
+- Backend: Node.js (Express), PostgreSQL / MongoDB
+- API: REST conventions
+- UI: Premium UX inspired by Google Pixel / Samsung One UI
+- PDF exports: Use jsPDF or PDFKit
+- WhatsApp integration: placeholders that can link to WhatsApp Business API later
+- Security: Role-based access, backend verification, defensive programming
+
+OVERVIEW:
+Build Smart Seller Assistant for a single restaurant called “Chicken Nation.” The system manages:
+- Dashboard
+- Inventory (stock)
+- Combos
+- Orders (including pending, delivered, debt, credit)
+- Reports
+- Market List
+- WhatsApp order integration
+- Settings
+
+High-level requirements (clarify each feature):
+- Premium UX: Clean spacing, soft rounded corners, smooth transitions, left vertical sidebar with icons + text
+- Always show context in header: Business name, branch badge
+- Role separation: Vendor/Branch user only; no multi-tenant complexity
+- Source of truth: Backend sync; no insecure frontend-only logic
+
+FEATURE SPECIFICATIONS:
+1) Dashboard:
+   - Show total revenue (delivered only)
+   - Total orders (delivered only)
+   - Delivered (green), Pending (red), Debt (orange), Credit (blue)
+   - Low stock alert widget
+   - Best-selling items
+   - Sales trends chart (last 7 days)
+   - Profit vs loss area chart
+   - Color-coded legends for statuses
+
+2) Inventory:
+   - List of products with name, price, quantity, low-stock threshold, stock status color
+   - CRUD: add, edit, delete
+   - Prevent orders of out-of-stock
+   - Auto-update stock when orders are delivered
+
+3) Combos:
+   - Create combo from existing products/ingredients
+   - Auto-calculate combo price
+   - Block combo creation if ingredients insufficient
+   - Combo stock reflects ingredient availability
+
+4) Orders:
+   - Fields: Order ID, items, discount, subtotal, total, date, status, payment type
+   - Payment types: Cash, Credit
+   - Statuses:
+     * Pending (🔴)
+     * Delivered (🟢)
+     * Debt (🟠) – business owes customer change
+     * Credit (🔵) – customer owes business
+   - Actions:
+     * Mark Delivered → stock reduces → revenue updates
+     * Mark Debt Paid → changes to Delivered
+     * Mark Credit Paid → changes status and update reports
+   - Printer integration:
+     * Receipt print option
+     * Configurable printer settings
+     * Clear warning if no printer
+
+5) Debt Section:
+   - List orders marked as Debt
+   - Show owed amount, customer name (optional), date
+   - Action: Mark as Paid → update to Delivered, recalc revenue
+   - Dashboard widget with total debt
+
+6) Credit Section:
+   - List orders marked as Credit
+   - Customer, amount owed, date
+   - Action: Mark as Paid
+   - Dashboard widget with total credit
+
+7) Market List:
+   - Item, quantity, priority (low/medium/high), notes, status
+   - CRUD
+   - PDF export (logo, business name, date, checklist)
+
+8) Reports:
+   - Date range selector
+   - Delivered-only data
+   - Total revenue, total orders, best sellers
+   - PDF export with business logo and formatted tables
+
+9) WhatsApp:
+   - Connect restaurant’s WhatsApp
+   - Show incoming messages
+   - Convert message → order (modal workflow)
+   - Provide quick reply templates
+   - Placeholder API integration, must be extendable
+
+10) Settings:
+   - Business name, address, logo
+   - Printer setup
+   - Currency (XAF)
+   - Low stock thresholds
+   - Light/Dark mode
+   - Language selector (JSON files for en/fr)
+   - Backup/restore data (optional)
+   - Reset system (admin confirmation modal)
+
+SECURITY & QUALITY:
+- Role-based access (vendor only)
+- Backend validation of all operations
+- No frontend-only security
+- Human-readable error messages
+- Defensive programming
+- Input validation & sanitization
+- No crashes
+- No data leaks
+
+UI/UX CONSTRAINTS:
+- Left vertical sidebar with icons + text
+- Collapsible
+- Always show business and current section title
+- Color-coded statuses
+- Skeleton loaders for async data
+- Smooth but minimal animations
+
+DELIVERABLES:
+- Folder structure: /frontend, /backend, /db
+- API contracts with TypeScript types
+- UI pages for each section
+- Exportable PDF logic
+- Clean file/component naming
+- Commented code
+
+EDGE CASES:
+- Negative stock prevented
+- Order creation blocked if insufficient stock
+- Debt and Credit distinctions must be clear
+- Must handle printer not connected without crashing
+
+Write complete code, including:
+- Backend routes
+- Frontend components (React/TypeScript)
+- Database schema
+- CRUD workflows
+- PDF export logic
+- WhatsApp integration placeholders
+*/
