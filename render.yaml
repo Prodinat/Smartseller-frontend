@@ -3,7 +3,8 @@ services:
     name: smart-seller-backend
     env: node
     rootDir: backend
-    buildCommand: npm ci && npm run build
+    # Ensure devDependencies (TypeScript + @types/*) are installed during build.
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start
     autoDeploy: true
     envVars:

@@ -3,6 +3,12 @@
   command = "npm ci && npm run build"
   publish = "dist"
 
+# Proxy API calls to Render backend (avoids CORS + env var issues).
+[[redirects]]
+  from = "/api/*"
+  to = "https://smartseller-backend.onrender.com/api/:splat"
+  status = 200
+
 # SPA routing (React Router)
 [[redirects]]
   from = "/*"

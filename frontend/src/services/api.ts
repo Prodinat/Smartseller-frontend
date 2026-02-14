@@ -1,4 +1,16 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const envUrl = (import.meta.env.VITE_API_URL as string | undefined) || '';
+const normalizeBase = (url: string) => {
+    const trimmed = url.trim().replace(/\/+$/, '');
+    if (!trimmed) return '';
+    return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+};
+
+// Best-effort defaults:
+// - Local dev: talk directly to backend
+// - Production (Netlify): use same-origin `/api` and rely on Netlify redirect/proxy
+const API_URL =
+    normalizeBase(envUrl) ||
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api');
 
 const getToken = () => localStorage.getItem('ssa_token');
 
