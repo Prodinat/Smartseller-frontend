@@ -18,8 +18,9 @@ const Login = ({ onSuccess }: { onSuccess: () => void }) => {
       const res = await api.post('/auth/login', { password });
       localStorage.setItem('ssa_token', res.token);
       onSuccess();
-    } catch {
-      setError(t('login.invalid_password'));
+    } catch (err: any) {
+      const msg = err?.message;
+      setError(typeof msg === 'string' && msg.trim() ? msg : t('login.invalid_password'));
     } finally {
       setLoading(false);
     }

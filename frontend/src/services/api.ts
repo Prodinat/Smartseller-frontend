@@ -7,10 +7,12 @@ const normalizeBase = (url: string) => {
 
 // Best-effort defaults:
 // - Local dev: talk directly to backend
-// - Production (Netlify): use same-origin `/api` and rely on Netlify redirect/proxy
+// - Production: default to the deployed backend URL (avoids relying on Netlify proxy rules)
 const API_URL =
     normalizeBase(envUrl) ||
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api');
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000/api'
+        : 'https://smartseller-backend.onrender.com/api');
 
 const getToken = () => localStorage.getItem('ssa_token');
 
